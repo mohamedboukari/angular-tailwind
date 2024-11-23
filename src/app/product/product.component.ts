@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class ProductComponent {
   items = [

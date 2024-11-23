@@ -2,13 +2,13 @@
     <h4 class="text-3xl text-indigo-500">Product</h4>
 
     <input placeholder="search..." type="search"
-        class="outline-none border-gray-300 border placeholder:text-gray-600 rounded-lg p-2" [value]="maxPrice" />
+        class="outline-none border-gray-300 border placeholder:text-gray-600 rounded-lg p-2" ((ngModel))="maxPrice" />
 
 
     <div class=" grid  grid-cols-[repeat(auto-fill,minmax(384px,1fr))]  h-max items-center justify-center gap-3 ">
         <div *ngFor="let item of items"
             class="max-w-sm  bg-white p-4 rounded-lg shadow hover:border hover:border-gray-400">
-            <ng-container *ngIf="item.quantity <=6">
+            <ng-container>
                 <a href="#">
                     <img class="rounded-t-lg" [src]="item.imgUrl" alt="Card image" />
                 </a>
@@ -21,11 +21,15 @@
                     </a>
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ item.description }}</p>
                     <p class=" py-4 text-gray-400">quantity: {{item.quantity}}</p>
-                    <div class="flex items-center justify-center"> <button [disabled]="item.quantity===0"
+                    <div class="flex items-center gap-2 justify-center"> <button [disabled]="item.quantity===0"
                             (click)="handleClick(item.title)"
                             class="inline-flex items-center disabled:bg-blue-300 justify-center disabled:cursor-not-allowed px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  w-32 ">
                             Bay
-                        </button></div>
+                        </button>
+                        <button class=" rounded-md bg-indigo-600 px-3 text-white py-2"><a
+                                [routerLink]="['/product', item.title]">details</a>
+                        </button>
+                    </div>
                 </div>
             </ng-container>
         </div>

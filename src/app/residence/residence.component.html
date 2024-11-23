@@ -1,0 +1,48 @@
+<p>residence works!</p>
+<ul *ngFor="let r of listResidences">
+
+
+    <li>
+        {{r.id}} - {{r.name}} - {{r.address}}
+
+        <button class="btn btn-primary" (click)="showAPart(r.id)">show</button>
+    </li>
+</ul>
+
+<input type="text" placeholder="enter surface" [(ngModel)]="surf"> {{surf}}
+<div *ngIf="listAPP.length!=0 ; else alt">
+
+    <table class="table" border=" 1 ">
+        <tr>
+            <td>AppartNum</td>
+            <td>FloorNum</td>
+            <td>surface</td>
+            <td>terrace</td>
+            <td>category</td>
+            <td>description</td>
+            <td>action</td>
+        </tr>
+
+        <tr *ngFor="let A of listAPP; let i=index">
+
+            <ng-container *ngIf="A.surface==surf || surf==null">
+
+
+                <td> {{A.appartNum}}</td>
+                <td> {{A.floorNum}}</td>
+                <td> {{A.surface}}</td>
+                <td> {{A.terrace}}</td>
+                <td> {{A.category}}</td>
+                <td> {{A.description}}</td>
+                <td>
+                    <button (click)="fav(i)">Like</button></td>
+            </ng-container>
+        </tr>
+    </table>
+
+
+</div>
+
+<ng-template #alt>
+    <p>no appartement found</p>
+</ng-template>
