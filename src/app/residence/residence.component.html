@@ -1,48 +1,21 @@
 <p>residence works!</p>
 <ul *ngFor="let r of listResidences">
-
-
     <li>
-        {{r.id}} - {{r.name}} - {{r.address}}
-
-        <button class="btn btn-primary" (click)="showAPart(r.id)">show</button>
+        {{r.name}}
+        <img src="{{r.image}}" alt="image" width="200">
+        <div [ngSwitch]="r.status">
+            <p *ngSwitchCase="'Disponible'"> Status : ✅</p>
+            <p *ngSwitchCase="'Vendu'">Status : ❌</p>
+            <p *ngSwitchCase="'En Construction'">Status : 🛠️</p>
+        </div>
+        <button class="px-3 py-1 bg-green-500 rounded-md text-white" (click)="showloc(r.address)">show location</button>
+        <button class="px-3 py-1 bg-indigo-500 ml-2 rounded-md text-white" (click)="Like(r)">Like</button>
     </li>
 </ul>
 
-<input type="text" placeholder="enter surface" [(ngModel)]="surf"> {{surf}}
-<div *ngIf="listAPP.length!=0 ; else alt">
 
-    <table class="table" border=" 1 ">
-        <tr>
-            <td>AppartNum</td>
-            <td>FloorNum</td>
-            <td>surface</td>
-            <td>terrace</td>
-            <td>category</td>
-            <td>description</td>
-            <td>action</td>
-        </tr>
+<h2>Liste Favoris</h2>
 
-        <tr *ngFor="let A of listAPP; let i=index">
-
-            <ng-container *ngIf="A.surface==surf || surf==null">
-
-
-                <td> {{A.appartNum}}</td>
-                <td> {{A.floorNum}}</td>
-                <td> {{A.surface}}</td>
-                <td> {{A.terrace}}</td>
-                <td> {{A.category}}</td>
-                <td> {{A.description}}</td>
-                <td>
-                    <button (click)="fav(i)">Like</button></td>
-            </ng-container>
-        </tr>
-    </table>
-
-
+<div *ngFor="let f of listFav">
+    {{ f.name }}
 </div>
-
-<ng-template #alt>
-    <p>no appartement found</p>
-</ng-template>

@@ -1,6 +1,7 @@
 import { ProductComponent } from './../product/product.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../product/service/product.service';
 
 @Component({
   selector: 'app-product-info',
@@ -14,22 +15,19 @@ export class ProductInfoComponent implements OnInit {
         title: string;
         quantity: number;
         description: string;
+        id: number;
       }
     | undefined = undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private productComponent: ProductComponent
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
-    console.log(this.route.params);
-
     this.route.paramMap.subscribe((params) => {
-      const title = params.get('id');
-      this.product = this.productComponent.items.find(
-        (item) => item.title === title
-      );
+      const id = Number(params.get('id'));
+      this.product = this.productService.items.find((item) => item.id === id);
     });
   }
 }

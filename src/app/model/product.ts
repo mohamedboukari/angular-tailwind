@@ -1,11 +1,7 @@
-
-
-
-export class Product
- {
-  id!:number;
-  title!:string;
-  price!:number;
-  quantity!:number;
-  image!:string;
- }
+export class Product {
+  imgUrl!: string;
+  title!: string;
+  quantity!: number;
+  id!: number;
+  description!: string;
+}

@@ -1,51 +1,16 @@
-import { Component, Injectable } from '@angular/core';
+import { Component } from '@angular/core';
+import { ProductService } from './service/product.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
 })
-@Injectable({
-  providedIn: 'root',
-})
 export class ProductComponent {
-  items = [
-    {
-      imgUrl: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg',
-      title: 'Noteworthy technology acquisitions 2021',
-      quantity: 3,
-
-      description:
-        'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    },
-    {
-      imgUrl:
-        'https://images.pexels.com/photos/1237119/pexels-photo-1237119.jpeg',
-      title: 'Innovative Startup Success Stories',
-      quantity: 6,
-      description:
-        'Discover some of the most groundbreaking startup stories from the past year.',
-    },
-    {
-      imgUrl:
-        'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg',
-      title: 'Tech Giants and Mergers',
-      description:
-        'A deep dive into the strategic mergers happening across the tech world.',
-      quantity: 10,
-    },
-    {
-      imgUrl:
-        'https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg',
-      title: 'Emerging Tech Trends',
-      description:
-        'Explore the newest trends in technology shaping the future of industries.',
-      quantity: 7,
-    },
-  ];
-
+  constructor(private productService: ProductService) {}
+  items = this.productService.items;
   handleClick = (title: string) => {
     console.log(title);
-    this.items.find((prod) => prod.title === title)!.quantity--;
+    this.productService.items.find((prod) => prod.title === title)!.quantity--;
   };
 
   maxPrice = 4000;
