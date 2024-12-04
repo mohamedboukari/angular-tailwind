@@ -33,5 +33,37 @@
                 </div>
             </ng-container>
         </div>
+
+    </div>
+    <p>indisponible products {{indisponibleProducts.length}}</p>
+    <div class=" grid  grid-cols-[repeat(auto-fill,minmax(384px,1fr))]  h-max items-center justify-center gap-3 ">
+        <div *ngFor="let item of indisponibleProducts"
+            class="max-w-sm  bg-white p-4 rounded-lg shadow hover:border hover:border-gray-400">
+            <ng-container>
+                <a href="#">
+                    <img class="rounded-t-lg" [src]="item.imgUrl" alt="Card image" />
+                </a>
+                <div>
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{
+                            item.title
+                            }}
+                        </h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ item.description }}</p>
+                    <p class=" py-4 text-gray-400">quantity: {{item.quantity}}</p>
+                    <div class="flex items-center gap-2 justify-center"> <button [disabled]="item.quantity===0"
+                            (click)="handleClick(item.title)"
+                            class="inline-flex items-center disabled:bg-blue-300 justify-center disabled:cursor-not-allowed px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  w-32 ">
+                            Bay
+                        </button>
+                        <button class=" rounded-md bg-green-600 px-3 text-white py-1.5"><a
+                                [routerLink]="['/product', item.id]">details</a>
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+
     </div>
 </div>

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Residence } from '../model/Residence';
 import { Apartment } from '../model/Apartement';
+import { FilterArrService } from '../services/filter-arr.service';
 
 @Component({
   selector: 'app-residence',
   templateUrl: './residence.component.html',
-  styleUrls: ['./residence.component.css'],
 })
 export class ResidenceComponent {
+  constructor(private filtredser: FilterArrService) {}
   listFav: Residence[] = [];
   listResidences: Residence[] = [
     {
@@ -72,4 +73,9 @@ export class ResidenceComponent {
       this.listFav.push(residence);
     }
   }
+  disponibleResidence = this.filtredser.filtredArr(
+    this.listResidences,
+    'status',
+    'Disponible'
+  );
 }

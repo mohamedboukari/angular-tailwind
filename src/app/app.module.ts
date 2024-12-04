@@ -8,9 +8,10 @@ import { UserComponent } from './user/user.component';
 import { ProductComponent } from './product/product.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ResidenceComponent } from './residence/residence.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Page404Component } from './page404/page404.component';
-import { ProductInfoComponent } from './product-info/product-info.component'; // <-- Import FormsModule here
+import { ProductInfoComponent } from './product-info/product-info.component';
+import { LoginComponent } from './login/login.component'; // <-- Import FormsModule here
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import { ProductInfoComponent } from './product-info/product-info.component'; //
     NavbarComponent,
     Page404Component,
     ProductInfoComponent,
+    LoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
