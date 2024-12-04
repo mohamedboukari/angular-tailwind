@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Product } from 'src/app/model/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   constructor() {}
-  items = [
+  items: Product[] = [
     {
       imgUrl: 'https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg',
       title: 'Noteworthy technology acquisitions 2021',
@@ -13,6 +14,7 @@ export class ProductService {
       id: 1,
       description:
         'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+      price: 23,
     },
     {
       imgUrl:
@@ -22,6 +24,7 @@ export class ProductService {
       description:
         'Discover some of the most groundbreaking startup stories from the past year.',
       id: 2,
+      price: 12,
     },
     {
       imgUrl:
@@ -31,6 +34,7 @@ export class ProductService {
         'A deep dive into the strategic mergers happening across the tech world.',
       quantity: 10,
       id: 3,
+      price: 18,
     },
     {
       imgUrl:
@@ -40,6 +44,7 @@ export class ProductService {
         'Explore the newest trends in technology shaping the future of industries.',
       quantity: 7,
       id: 4,
+      price: 30,
     },
   ];
 }

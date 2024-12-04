@@ -11,7 +11,8 @@ import { ResidenceComponent } from './residence/residence.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Page404Component } from './page404/page404.component';
 import { ProductInfoComponent } from './product-info/product-info.component';
-import { LoginComponent } from './login/login.component'; // <-- Import FormsModule here
+import { LoginComponent } from './login/login.component';
+import { AddProductComponent } from './add-product/add-product.component'; // <-- Import FormsModule here
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component'; // <-- Import FormsMod
     Page404Component,
     ProductInfoComponent,
     LoginComponent,
+    AddProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
