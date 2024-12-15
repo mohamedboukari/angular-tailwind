@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'product', component: ProductComponent },
   { path: 'product/:id', component: ProductInfoComponent },
   { path: 'add-product', component: AddProductComponent },
+  { path: 'update-product/:id', component: AddProductComponent },
+
   { path: 'residence', component: ResidenceComponent },
   { path: 'not-found', component: Page404Component },
   { path: '**', redirectTo: '/not-found' },

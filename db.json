@@ -1,0 +1,58 @@
+{
+  "product": [
+    {
+      "imgUrl": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg",
+      "title": "Noteworthy technology acquisitions 2021",
+      "quantity": 3,
+      "id": "1",
+      "description": "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+      "price": 23
+    },
+    {
+      "title": "Innovative Startup Success Stories",
+      "imgUrl": "https://images.pexels.com/photos/1237119/pexels-photo-1237119.jpeg",
+      "quantity": 4,
+      "id": "2",
+      "description": "Discover some of the most groundbreaking startup stories from the past year.",
+      "price": 122
+    },
+    {
+      "imgUrl": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
+      "title": "Tech Giants and Mergers",
+      "description": "A deep dive into the strategic mergers happening across the tech world.",
+      "quantity": 10,
+      "id": "3",
+      "price": 18
+    }
+  ],
+  "residence": [
+    {
+      "id": "1",
+      "name": "El fel",
+      "address": "Borj Cedria",
+      "image": "https://plus.unsplash.com/premium_photo-1684175656320-5c3f701c082c",
+      "status": "Disponible"
+    },
+    {
+      "id": "2",
+      "name": "El yasmine",
+      "address": "Ezzahra",
+      "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
+      "status": "Disponible"
+    },
+    {
+      "id": "3",
+      "name": "El Arij",
+      "address": "Rades",
+      "image": "https://images.unsplash.com/photo-1493809842364-78817add7ffb",
+      "status": "Vendu"
+    },
+    {
+      "id": "4",
+      "name": "El Anber",
+      "address": "inconnu",
+      "image": "https://images.unsplash.com/photo-1499955085172-a104c9463ece",
+      "status": "En Construction"
+    }
+  ]
+}

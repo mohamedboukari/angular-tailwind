@@ -6,7 +6,7 @@
             <!-- Modal header -->
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 border-gray-300">
                 <h3 class="text-lg font-semibold text-gray-900">
-                    Add Product
+                    {{ id ? 'Update Product' : 'Add Product' }}
                 </h3>
 
             </div>
@@ -79,7 +79,7 @@
                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                             clip-rule="evenodd"></path>
                     </svg>
-                    Add new product
+                    {{ id ? 'Update Product' : 'Add Product' }}
                 </button>
             </form>
         </div>

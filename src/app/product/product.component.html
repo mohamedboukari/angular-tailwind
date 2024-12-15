@@ -35,6 +35,12 @@
                         <button class=" rounded-md bg-green-600 px-3 text-white py-1.5"><a
                                 [routerLink]="['/product', item.id]">details</a>
                         </button>
+                        <button class=" rounded-md bg-blue-600 px-3 text-white py-1.5"><a
+                                [routerLink]="['/update-product', item.id]">update</a>
+                        </button>
+                        <button class=" rounded-md bg-red-600 px-3 text-white py-1.5" (click)="handleDelete(item.id)">
+                            delete
+                        </button>
                     </div>
                 </div>
             </ng-container>
