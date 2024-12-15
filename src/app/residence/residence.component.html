@@ -1,23 +1,44 @@
-<p>residence works!</p>
-<ul *ngFor="let r of listResidences">
-    <li>
-        {{r.name}}
-        <img src="{{r.image}}" alt="image" width="200">
-        <div [ngSwitch]="r.status">
-            <p *ngSwitchCase="'Disponible'"> Status : ✅</p>
-            <p *ngSwitchCase="'Vendu'">Status : ❌</p>
-            <p *ngSwitchCase="'En Construction'">Status : 🛠️</p>
-        </div>
-        <button class="px-3 py-1 bg-green-500 rounded-md text-white" (click)="showloc(r.address)">show location</button>
-        <button class="px-3 py-1 bg-indigo-500 ml-2 rounded-md text-white" (click)="Like(r)">Like</button>
-    </li>
-</ul>
+<div class="p-6 bg-gray-100 ">
+    <p class="text-indigo-600 text-lg font-semibold mb-4">Residence Works!</p>
+    <ul class="space-y-6">
+        <li *ngFor="let r of listResidences" class="p-4 bg-white shadow-md rounded-lg">
+            <div class="flex items-center space-x-4">
+                <div class="flex-1">
+                    <div>
+                        <p class="text-gray-800 font-semibold text-lg">{{ r.name }}</p>
+                        <img src="{{ r.image }}" alt="Residence Image" class="rounded-md border border-gray-300 mt-2"
+                            width="200">
+                    </div>
+                    <div class="flex-grow">
+                        <div [ngSwitch]="r.status" class="mt-2">
+                            <p *ngSwitchCase="'Disponible'" class="text-green-600 font-semibold">Status: ✅ Disponible
+                            </p>
+                            <p *ngSwitchCase="'Vendu'" class="text-red-600 font-semibold">Status: ❌ Vendu</p>
+                            <p *ngSwitchCase="'En Construction'" class="text-yellow-600 font-semibold">Status: 🛠️ En
+                                Construction</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+                        (click)="showloc(r.address)">
+                        Show Location
+                    </button>
+                    <button class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition"
+                        (click)="Like(r)">
+                        Like
+                    </button>
+                </div>
+            </div>
+        </li>
+    </ul>
 
+    <h2 class="text-indigo-600 text-lg font-semibold mt-8">Liste Favoris</h2>
+    <div *ngFor="let f of listFav" class="mt-2 text-gray-800">
+        {{ f.name }}
+    </div>
 
-<h2>Liste Favoris</h2>
-
-<div *ngFor="let f of listFav">
-    {{ f.name }}
+    <h2 class="text-indigo-600 text-lg font-semibold mt-8">
+        Disponible: <span class="text-gray-800">{{ disponibleResidence.length }}</span>
+    </h2>
 </div>
-
-<h2>Disponible {{disponibleResidence.length}}</h2>

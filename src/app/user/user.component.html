@@ -1,23 +1,45 @@
-<div>
-    <p class="text-indigo-500">user work:</p>
-    <table border="device-width">
+<div class="p-6 bg-gray-100 min-h-screen">
+    <div class="mb-8">
+        <p class="text-gray-600 text-lg font-semibold mb-4">Users:</p>
+        <div class="overflow-x-auto shadow-md rounded-lg">
+            <table class="min-w-full border-collapse border border-gray-300 bg-white">
+                <thead class="bg-indigo-500 text-white">
+                    <tr>
+                        <th class="px-4 py-2 border border-gray-300 text-left">ID</th>
+                        <th class="px-4 py-2 border border-gray-300 text-left">Name</th>
+                        <th class="px-4 py-2 border border-gray-300 text-left">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of user" class="hover:bg-gray-100 even:bg-gray-50">
+                        <td class="px-4 py-2 border border-gray-300">{{ i.id }}</td>
+                        <td class="px-4 py-2 border border-gray-300">{{ i.name }}</td>
+                        <td class="px-4 py-2 border border-gray-300">{{ i.age }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-        <tr *ngFor="let i of user">
-            <td>{{i.id}}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.age}}</td>
-
-        </tr>
-
-    </table>
-    <p>user 25 age :</p>
-    <table border="device-width">
-
-        <tr *ngFor="let i of user25Age">
-            <td>{{i.id}}</td>
-            <td>{{i.name}}</td>
-            <td>{{i.age}}</td>
-
-        </tr>
-    </table>
+    <div>
+        <p class="text-gray-600 text-lg font-semibold mb-4">User 25 Age:</p>
+        <div class="overflow-x-auto shadow-md rounded-lg">
+            <table class="min-w-full border-collapse border border-gray-300 bg-white">
+                <thead class="bg-indigo-500 text-white">
+                    <tr>
+                        <th class="px-4 py-2 border border-gray-300 text-left">ID</th>
+                        <th class="px-4 py-2 border border-gray-300 text-left">Name</th>
+                        <th class="px-4 py-2 border border-gray-300 text-left">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of user25Age" class="hover:bg-gray-100 even:bg-gray-50">
+                        <td class="px-4 py-2 border border-gray-300">{{ i.id }}</td>
+                        <td class="px-4 py-2 border border-gray-300">{{ i.name }}</td>
+                        <td class="px-4 py-2 border border-gray-300">{{ i.age }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
