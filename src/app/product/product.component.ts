@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterArrService } from '../services/filter-arr.service';
-import { ProductService } from '../services/product.service';
 import { Product } from '../model/product';
+import { ProductAxiosService } from '../services/product-axios.service';
 
 @Component({
   selector: 'app-product',
@@ -9,21 +9,39 @@ import { Product } from '../model/product';
 })
 export class ProductComponent implements OnInit {
   constructor(
-    private productService: ProductService,
+    private productService: ProductAxiosService,
     private filtredser: FilterArrService
   ) {}
   items: Product[] = [];
-  indisponibleProducts: Product[] = [];
-  ngOnInit(): void {
-    this.productService.getProducts().subscribe((products: Product[]) => {
-      this.items = products;
+  fullItems: Product[] = [];
 
-      this.indisponibleProducts = this.filtredser.filtredArr(
-        this.items,
-        'quantity',
-        0
-      );
-    });
+  indisponibleProducts: Product[] = [];
+  maxPrice = 4000;
+
+  ngOnInit(): void {
+    this.productService
+      .getProducts()
+      .then((products: Product[]) => {
+        this.fullItems = products;
+        this.updateItems(this.maxPrice);
+
+        this.indisponibleProducts = this.filtredser.filtredArr(
+          this.items,
+          'quantity',
+          0
+        );
+      })
+      .catch((err) => console.log(err))
+      .finally(() => console.log('finally'));
+  }
+  updateItems(maxPrice: number): void {
+    this.items = this.fullItems.filter((prod) => prod.price <= maxPrice);
+
+    this.indisponibleProducts = this.filtredser.filtredArr(
+      this.items,
+      'quantity',
+      0
+    );
   }
   handleClick = (title: string) => {
     console.log(title);
@@ -34,8 +52,7 @@ export class ProductComponent implements OnInit {
       0
     );
   };
-  handleDelete = (id: number) => {
-    this.productService.deleteProduct(id).subscribe(() => this.ngOnInit());
+  handleDelete = (id: string) => {
+    this.productService.deleteProduct(id).then(() => this.ngOnInit());
   };
-  maxPrice = 4000;
 }

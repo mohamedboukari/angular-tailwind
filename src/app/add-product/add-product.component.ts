@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../model/product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../services/product.service';
+import { ProductAxiosService } from '../services/product-axios.service';
 
 @Component({
   selector: 'app-add-product',
@@ -10,11 +10,11 @@ import { ProductService } from '../services/product.service';
 })
 export class AddProductComponent {
   product: Product | undefined = undefined;
-  id: number | null = null;
+  id: string | null = null;
   formProduct: FormGroup = new FormGroup({});
 
   constructor(
-    private productService: ProductService,
+    private productService: ProductAxiosService,
     private route: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -38,21 +38,15 @@ export class AddProductComponent {
     });
 
     this.activatedRoute.paramMap.subscribe(async (params) => {
-      const idx = Number(params.get('id'));
+      const idx = params.get('id');
       this.id = idx;
 
       if (this.id) {
-        this.productService.getProduct(this.id).subscribe((p) => {
+        this.productService.getProduct(this.id).then((p) => {
           this.product = p;
 
           if (this.product) {
-            this.formProduct.patchValue({
-              title: this.product.title,
-              imgUrl: this.product.imgUrl,
-              price: this.product.price,
-              quantity: this.product.quantity,
-              description: this.product.description,
-            });
+            this.formProduct.patchValue(this.product);
           }
         });
       }
@@ -63,18 +57,18 @@ export class AddProductComponent {
     e.preventDefault();
 
     const body: Product = {
-      title: this.formProduct.value.title ?? '',
-      imgUrl: this.formProduct.value.imgUrl ?? '',
+      title: this.formProduct.value.title || '',
+      imgUrl: this.formProduct.value.imgUrl || '',
       quantity: Number(this.formProduct.value.quantity),
-      id: this.id ?? new Date().getTime(),
-      description: this.formProduct.value.description ?? '',
+      id: this.id?.toString() || new Date().getTime().toString(),
+      description: this.formProduct.value.description || '',
       price: Number(this.formProduct.value.price),
     };
 
     (this.id
       ? this.productService.updateProduct(this.id, body)
       : this.productService.createProduct(body)
-    ).subscribe(() => {
+    ).then(() => {
       this.route.navigateByUrl('/product');
       this.formProduct.reset();
     });

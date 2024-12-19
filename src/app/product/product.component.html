@@ -6,41 +6,44 @@
             product</a>
     </div>
 
-    <input placeholder="search..." type="search"
-        class="outline-none border-gray-300 border placeholder:text-gray-600 rounded-lg p-2" ((ngModel))="maxPrice" />
+    <input placeholder="search..." [value]="maxPrice"
+        class="outline-none border-gray-300 border placeholder:text-gray-600 rounded-lg p-2" [(ngModel)]="maxPrice"
+        (ngModelChange)="updateItems($event)" />
 
 
     <div class=" grid  grid-cols-[repeat(auto-fill,minmax(384px,1fr))]  h-max items-center justify-center gap-3 ">
         <div *ngFor="let item of items"
             class="max-w-sm  bg-white p-4 rounded-lg shadow hover:border hover:border-gray-400">
-            <ng-container>
-                <a href="#">
-                    <img class="rounded-t-lg" [src]="item.imgUrl" alt="Card image" />
-                </a>
+            <ng-container *ngIf="item.price< maxPrice || maxPrice==null ">
                 <div>
-                    <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{
-                            item.title
-                            }}
-                        </h5>
-                    </a>
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ item.description }}</p>
-                    <p class=" py-4 text-gray-400">quantity: {{item.quantity}}</p>
-                    <p class=" py-4 text-gray-400">Price: {{item.price | currency:'USD':'symbol-narrow':'1.0-0'}}</p>
-                    <div class="flex items-center gap-2 justify-center"> <button [disabled]="item.quantity===0"
-                            (click)="handleClick(item.title)"
-                            class="inline-flex items-center disabled:bg-blue-300 justify-center disabled:cursor-not-allowed px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  w-32 ">
-                            Bay
-                        </button>
-                        <button class=" rounded-md bg-green-600 px-3 text-white py-1.5"><a
-                                [routerLink]="['/product', item.id]">details</a>
-                        </button>
-                        <button class=" rounded-md bg-blue-600 px-3 text-white py-1.5"><a
-                                [routerLink]="['/update-product', item.id]">update</a>
-                        </button>
-                        <button class=" rounded-md bg-red-600 px-3 text-white py-1.5" (click)="handleDelete(item.id)">
-                            delete
-                        </button>
+                    <img class="rounded-t-lg" [src]="item.imgUrl" alt="Card image" />
+                    <div>
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{
+                                item.title
+                                }}
+                            </h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ item.description }}</p>
+                        <p class=" py-4 text-gray-400">quantity: {{item.quantity}}</p>
+                        <p class=" py-4 text-gray-400">Price: {{item.price | currency:'USD':'symbol-narrow':'1.0-0'}}
+                        </p>
+                        <div class="flex items-center gap-2 justify-center"> <button [disabled]="item.quantity===0"
+                                (click)="handleClick(item.title)"
+                                class="inline-flex items-center disabled:bg-blue-300 justify-center disabled:cursor-not-allowed px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800  focus:outline-none  w-32 ">
+                                Bay
+                            </button>
+                            <button class=" rounded-md bg-green-600 px-3 text-white py-1.5"><a
+                                    [routerLink]="['/product', item.id]">details</a>
+                            </button>
+                            <button class=" rounded-md bg-blue-600 px-3 text-white py-1.5"><a
+                                    [routerLink]="['/update-product', item.id]">update</a>
+                            </button>
+                            <button class=" rounded-md bg-red-600 px-3 text-white py-1.5"
+                                (click)="handleDelete(item.id)">
+                                delete
+                            </button>
+                        </div>
                     </div>
                 </div>
             </ng-container>

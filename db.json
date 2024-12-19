@@ -11,10 +11,10 @@
     {
       "title": "Innovative Startup Success Stories",
       "imgUrl": "https://images.pexels.com/photos/1237119/pexels-photo-1237119.jpeg",
-      "quantity": 4,
+      "quantity": 41,
       "id": "2",
       "description": "Discover some of the most groundbreaking startup stories from the past year.",
-      "price": 122
+      "price": 12
     },
     {
       "imgUrl": "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg",
@@ -23,6 +23,30 @@
       "quantity": 10,
       "id": "3",
       "price": 18
+    },
+    {
+      "id": "1734631365501",
+      "title": "hahgag",
+      "imgUrl": "https://plus.unsplash.com/premium_photo-1683865776032-07bf70b0add1?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "quantity": 222,
+      "description": "ssweajaj jajaja akjja",
+      "price": 22
+    },
+    {
+      "id": 1734631630742,
+      "title": "haghag",
+      "imgUrl": "https://images.pexels.com/photos/1237119/pexels-photo-1237119.jpeg",
+      "quantity": 22,
+      "description": " hahsh ahhaha hahaha ",
+      "price": 22
+    },
+    {
+      "title": "ggghh",
+      "imgUrl": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg",
+      "quantity": 3,
+      "id": "1734636292249",
+      "description": "ajabh. ajaj. akjajaj ",
+      "price": 33
     }
   ],
   "residence": [
